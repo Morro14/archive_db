@@ -1,0 +1,4 @@
+.env.prod
+/app/.env.dev
+venv
+/app/db.sqlite3

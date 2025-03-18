@@ -1,0 +1,77 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load allauth %}
+    {% comment %} {% load bootstrap5 %} {% endcomment %}
+    {% comment %} {% bootstrap_css %}
+    {% bootstrap_javascript %} {% endcomment %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href=" https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/sandstone/bootstrap.min.css " rel="stylesheet" />
+    <title>
+      {% block head_title %}
+
+      {% endblock %}
+    </title>
+    {% block extra_head %}
+
+    {% endblock %}
+  </head>
+  <body class="min-vh-100 d-flex flex-shrink-0 flex-column">
+    <header data-bs-theme="dark">
+      <nav class="navbar navbar-expand-sm bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">ArchiveDB</a>
+          <div class="container-fluid">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="/" aria-current="page">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled link</a>
+              </li>
+            </ul>
+          </div>
+          <div class="d-flex text-nowrap">
+            <ul class="navbar-nav gap-2">
+              {% if user.is_authenticated %}
+                {% url 'account_logout' as logout_url_ %}
+                {% if logout_url_ %}
+                  <li class="nav-item">
+                    <a href="{{ logout_url_ }}" class="btn btn-danger">{% trans 'Sign Out' %}</a>
+                  </li>
+                {% endif %}
+                {% url 'account_email' as email_url_ %}
+                {% if email_url_ %}
+                  <li class="nav-item">
+                    <a href="{{ email_url_ }}" class="btn btn-outline-light">{% trans 'Manage Account' %}</a>
+                  </li>
+                {% endif %}
+              {% else %}
+                {% url 'account_login' as login_url_ %}
+                {% if login_url_ %}
+                  <li class="nav-item">
+                    <a href="{{ login_url_ }}" class="btn btn-outline-light">{% trans 'Sign In' %}</a>
+                  </li>
+                {% endif %}
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {% block body %}
+      {% block content %}
+
+      {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+
+    {% endblock %}
+  </body>
+</html>

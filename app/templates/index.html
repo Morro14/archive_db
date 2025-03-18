@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{% block main %}
+{% load socialaccount %}
+
+    <h1 style="text-align: center;"> My google OAuth Project </h1>
+    {% if user.is_authenticated %}
+    <p>Welcome. You are logged in as {{user.username}} </p>
+    {% else %}
+    {% comment %} {% provider_login_url %}
+    <a href="{% provider_login_url "openid" openid="https://www.google.com/accounts/o8/id" next="/success/url/" %}">Google</a> {% endcomment %}
+    {% endif %}
+    {% endblock  %}
