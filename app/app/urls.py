@@ -31,6 +31,6 @@ urlpatterns = [
     path("logout", LogoutView.as_view()),
     path("data/add", DataEntryCreateView.as_view()),
     path("data/all", DataEntryListView.as_view()),
-    path("data/", RedirectOauthView),
+    path("data/", DataEntryListView.as_view()),
     path("google_oauth/callback/", CallbackView),
 ]

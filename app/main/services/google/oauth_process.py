@@ -8,7 +8,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/cloud-platform",
     "https://www.googleapis.com/auth/drive",
 ]
-ID_FILE_PATH = os.path.dirname(__file__) + "\\credentials.json"
+ID_FILE_PATH = os.path.dirname(__file__) + "\\google_credentials.json"
 REDIRECT_URI = "http://127.0.0.1:8000/google_oauth/callback/"
 
 

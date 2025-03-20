@@ -2,3 +2,4 @@
 /app/.env.dev
 venv
 /app/db.sqlite3
+google_credentials.json

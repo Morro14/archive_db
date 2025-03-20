@@ -2,7 +2,7 @@ from typing import Any
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager, Group
 from datetime import datetime
-from .services.google.download_file import download_file
+
 from PIL import Image
 import io
 import os
@@ -31,12 +31,12 @@ class DataEntry(models.Model):
     def save(self):
 
         self.create_time = datetime.now()
-        file = download_file(self.file_realid)
-        print(type(file))
+        # file = download_file(self.file_realid)
+        # print(type(file))
         # image = Image.open(io.BytesIO(file))
         # image.save(f"static/uploads/IMG_{self.file_realid}.jpeg")
         # self.file.name = f"static/uploads/IMG_{self.file_realid}.jpeg"
-        self.file = file
+        # self.file = file
         super().save()
 
 
